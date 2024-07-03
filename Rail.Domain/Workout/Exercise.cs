@@ -10,6 +10,7 @@ namespace Rail.Domain.Workout
         public string Title {get; set;}
         public string Description {get;set;}
         public List<Muscule> Muscules {get; set;}
+        public Stuff Stuff {get;set;}
 
         public Exercise(string title, Muscule muscule) 
         {

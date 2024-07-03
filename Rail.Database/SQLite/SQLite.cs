@@ -1,32 +1,27 @@
 using Rail.Database.Abstractions;
-using sqlite-net-pcl;
+using Microsoft.Data.Sqlite;
+using Rail.Database.Entities;
+using System.Data;
+using Dapper;
 
 namespace Rail.Database.SQLite;
 
-public sealed class SQLite : ISqlDb 
+public sealed class Sqlite : ISqlDb 
 {
-    private SQLiteConnection db;
-    public SQLite(string path) 
+    public IDbConnection Connection {get;set;}
+    public Sqlite(string path) 
     {   
-        InitDB(path)
+        Connection = new SqliteConnection($"DataSource={path}");
+        // if db not exists
+        CreateDB();
+
     }
-    public void InitDB(string path)
+    private void CreateDB()
     {
-        db = new(path);
-        db.CreateTable<IUser>();
-        db.CreateTable<ITraining>();
-        db.CreateTable<IExercise>();
-
+        Connection.Query("CREATE TABLE IF NOT EXISTS users (Name TEXT,id TEXT,Email TEXT, Password TEXT, Level INTEGER, Exp INTEGER )");
+        Connection.Query("CREATE TABLE IF NOT EXISTS exercises (id TEXT, Title TEXT, Description TEXT, Muscules BLOB, Stuff TEXT)");
+        Connection.Query("CREATE TABLE IF NOT EXISTS training (id TEXT, Title TEXT, Userid TEXT, Exercises_ids BLOB)");
     }
+    
 
-    public void CreateUser(IUser user);
-    {
-        
-    }
-    public void CreateTraining(ITraining training);
-    public void CreateExercise(IExercise exercise);
-
-    public void DeleteUser(IUser user);
-    public void DeleteTraining(ITraining training);
-    public void DeleteExercise(IExercise exercise);
 }

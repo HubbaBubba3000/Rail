@@ -1,5 +1,6 @@
 
 using Rail.Domain.Profile.ValueObjects;
+using Rail.Domain.Workout;
 
 namespace Rail.Domain.Abstractions;
 
@@ -10,4 +11,9 @@ public interface IUser
 
     public Email Email {get;set;}
     public Password Password {get;set;}
+
+    public List<Training> Trainings {get;set;}
+
+    public int Level {get;set;}
+    public int Exp {get;set;}
 }
