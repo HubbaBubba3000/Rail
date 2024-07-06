@@ -6,5 +6,9 @@
         x:Class="Rail.Avalonia.View.MainWindow"
         xmlns:v="clr-namespace:Rail.Avalonia.View"
         Title="Rail">
-    <v:Header/>
+    <Grid> 
+        <v:Header VerticalAlignment="Top" DataContext="{Binding Header}"/>
+        
+        <v:NavBar VerticalAlignment="Bottom" DataContext="{Binding Navbar}" />
+    </Grid>
 </Window>

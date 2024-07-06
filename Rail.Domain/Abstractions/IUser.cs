@@ -12,7 +12,7 @@ public interface IUser
     public Email Email {get;set;}
     public Password Password {get;set;}
 
-    public List<Training> Trainings {get;set;}
+    public List<ITraining> Trainings {get;set;}
 
     public int Level {get;set;}
     public int Exp {get;set;}

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rail.Domain", "Rail.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rail.Testing", "Rail.Testing\Rail.Testing.csproj", "{ADF7C5A6-7C5B-448F-B96D-4CC01A9C5330}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rail.Avalonia", "Rail.Avalonia\Rail.Avalonia.csproj", "{F2625C37-0C66-4202-859F-19C981B09D96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rail.Database", "Rail.Database\Rail.Database.csproj", "{A3E50A34-1EB4-4192-B20D-F2013FFB9F26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{ADF7C5A6-7C5B-448F-B96D-4CC01A9C5330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADF7C5A6-7C5B-448F-B96D-4CC01A9C5330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADF7C5A6-7C5B-448F-B96D-4CC01A9C5330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2625C37-0C66-4202-859F-19C981B09D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2625C37-0C66-4202-859F-19C981B09D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2625C37-0C66-4202-859F-19C981B09D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2625C37-0C66-4202-859F-19C981B09D96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E50A34-1EB4-4192-B20D-F2013FFB9F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E50A34-1EB4-4192-B20D-F2013FFB9F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E50A34-1EB4-4192-B20D-F2013FFB9F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E50A34-1EB4-4192-B20D-F2013FFB9F26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

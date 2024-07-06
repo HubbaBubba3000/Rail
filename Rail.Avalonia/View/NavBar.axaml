@@ -5,5 +5,9 @@
         x:Class="Rail.Avalonia.View.NavBar"
         Height="100"
         xmlns:v="clr-namespace:Rail.Avalonia.View">
-    
+    <StackPanel Orientation="Horizontal">
+        <Button Content="Home" />
+        <Button Content="Progressing" />
+        <Button Content="Settings" />
+    </StackPanel>
 </UserControl>

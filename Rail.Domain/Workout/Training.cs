@@ -9,6 +9,8 @@ public sealed class Training : ITraining
 {
     public string Title {get;set;}
 
+    public Guid id {get;set;}
+
     public Guid UserID {get;set;}
 
     public List<IExercise> Exercises {get;set;}

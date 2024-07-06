@@ -12,12 +12,17 @@ public sealed class DBContext : IDBContext
     public DBContext(ISqlDb _db)
     {
         db = _db;
+        db.ConnectDB("users.db");
     }
 #region  user
     // todo cast to User
     public IEnumerable<User> GetUserByName(string name) 
     { 
         return db.Connection.Query<User>("SELECT * FROM users WHERE Name = @Name", new {Name = name});
+    }
+    public IEnumerable<User> GetAllUsers() 
+    { 
+        return db.Connection.Query<User>("SELECT * FROM users");
     }
     public IEnumerable<User> GetUserByEmail(string email) 
     { 

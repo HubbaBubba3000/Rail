@@ -13,7 +13,7 @@ public sealed class User : IUser
     public Email Email {get;set;}
     public Password Password {get;set;}
 
-    public List<Training> Training {get;set;}
+    public List<ITraining> Trainings {get;set;} = new();
 
     public int Level {get;set;} = 1;
     public int Exp {get;set;}

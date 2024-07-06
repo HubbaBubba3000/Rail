@@ -1,4 +1,5 @@
-
+using Rail.Database.Entities;
+using System.Collections.Generic;
 namespace Rail.Database.Abstractions;
 
 public interface IDBContext
@@ -7,6 +8,7 @@ public interface IDBContext
     public IEnumerable<User> GetUserByName(string name);
     public IEnumerable<User> GetUserByEmail(string email);
     public IEnumerable<User> GetUserById(string id);
+    public IEnumerable<User> GetAllUsers();
 
     public void DeleteUser(User user);
     public void CreateUser(User user);

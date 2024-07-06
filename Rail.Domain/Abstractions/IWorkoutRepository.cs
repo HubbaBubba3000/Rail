@@ -1,7 +1,10 @@
+using Rail.Database.Abstractions;
+
 namespace Rail.Domain.Abstractions;
+
 public interface IWorkoutRepository
 {
-    private readonly IDBContext db {get;set;}
+    //private IDBContext db {get;}
 
     public void DeleteExercise(IExercise exercise);
     public void CreateExercise(IExercise exercise);

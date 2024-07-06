@@ -5,7 +5,7 @@ namespace Rail.Domain.Profile.ValueObjects;
 public sealed class Password 
 {
     private const string notContain = @",./;'[]{}!@#$%^&*()-=+_<>?|\";
-    private byte[] content {get; private set;}
+    private byte[] content {get; set;}
 
     private Password(string word)
     {
@@ -18,11 +18,17 @@ public sealed class Password
     {
         //not encripted!!!
         
-        return new Password(content);
+        return new Password(word);
+    }
+    public static Password GetFromDB(string word) 
+    {
+        //not encripted!!!
+        
+        return new Password(word);
     }
 
     public override string ToString()
     {
-        return (string)content;
+        return Encoding.ASCII.GetString(content);
     }
 }

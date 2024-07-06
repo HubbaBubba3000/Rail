@@ -9,12 +9,14 @@ namespace Rail.Database.SQLite;
 public sealed class Sqlite : ISqlDb 
 {
     public IDbConnection Connection {get;set;}
-    public Sqlite(string path) 
+    public Sqlite() 
     {   
-        Connection = new SqliteConnection($"DataSource={path}");
-        // if db not exists
-        CreateDB();
 
+    }
+    public void ConnectDB(string path)
+    {
+        Connection = new SqliteConnection($"DataSource={path}");
+        CreateDB();
     }
     private void CreateDB()
     {

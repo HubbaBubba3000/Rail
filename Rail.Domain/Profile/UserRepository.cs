@@ -1,7 +1,10 @@
 using Rail.Database;
 using Rail.Database.Entities;
+using Rail.Database.Abstractions;
 using Rail.Domain.Abstractions;
 using Rail.Domain.Profile.ValueObjects;
+
+using System.Linq;
 
 namespace Rail.Domain.Profile;
 
@@ -9,7 +12,7 @@ public sealed class UserRepository : IUserRepository
 {
     public List<IUser> Users {get;set;}
 
-    private IDBContext db {get;set;}
+    private readonly IDBContext db;
     public UserRepository(IDBContext _db) 
     {
         db = _db;
@@ -23,7 +26,19 @@ public sealed class UserRepository : IUserRepository
             Name = u.Name,
             id = u.id.ToString(),
             Email = u.Email.ToString(),
-            Password = Password.Encrypt(u.Password.ToString()),
+            Password = u.Password.ToString(),
+            Level = u.Level,
+            Exp = u.Exp
+        };
+    }
+    private User MapEntityToUser(Rail.Database.Entities.User u)
+    {
+        return new User() 
+        {
+            Name = u.Name,
+            id = Guid.NewGuid(),
+            Email = new Email(u.Email),
+            Password = Password.GetFromDB(u.Password),
             Level = u.Level,
             Exp = u.Exp
         };
@@ -43,7 +58,12 @@ public sealed class UserRepository : IUserRepository
 
     public bool CheckUser(IUser user) 
     {
-        return (db.GetUserByEmail(user.Email) != null);
+        return (db.GetUserByEmail(user.Email.ToString()) != null);
+    }
+    public IUser GetUser(string name) 
+    {
+        var u = db.GetAllUsers().FirstOrDefault();
+        return MapEntityToUser(u);
     }
     public void EditUser(IUser user) 
     {

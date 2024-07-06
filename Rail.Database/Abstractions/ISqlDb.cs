@@ -5,4 +5,6 @@ public interface ISqlDb
 {
     IDbConnection Connection {get;set;}
 
+    public void ConnectDB(string path);
+
 }
