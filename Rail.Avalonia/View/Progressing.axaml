@@ -2,12 +2,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        x:Class="Rail.Avalonia.View.NavBar"
-        Height="50"
+        x:Class="Rail.Avalonia.View.Progressing"
         xmlns:v="clr-namespace:Rail.Avalonia.View">
-    <StackPanel Orientation="Horizontal">
-        <Button Content="Home" />
-        <Button Content="Progressing" />
-        <Button Content="Settings" />
-    </StackPanel>
+    
+    <ScrollViewer Background="#34f573" Padding="5">
+        <TextBlock Text="Progressiong"/>
+    </ScrollViewer>
 </UserControl>

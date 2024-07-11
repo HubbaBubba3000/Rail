@@ -14,13 +14,13 @@ public interface IDBContext
     public void CreateUser(User user);
     public void UpdateUser(User user);
 
-    public IEnumerable<Exercise> GetExerciseByTitle(string title);
+    public IEnumerable<Exercise> GetExercisesById(List<Guid> ids);
 
     public void DeleteExercise(Exercise exercise);
     public void CreateExercise(Exercise exercise);
     public void UpdateExercise(Exercise exercise);
 
-    public IEnumerable<Training> GetTrainingByTitle(string title);
+    public IEnumerable<Training> GetTrainingByUserId(string userid);
 
     public void DeleteTraining(Training training);
     public void CreateTraining(Training training);

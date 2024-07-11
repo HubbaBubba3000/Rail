@@ -1,10 +1,12 @@
 using Rail.Database.Abstractions;
-
+using System.Collections.Generic;
 namespace Rail.Domain.Abstractions;
 
 public interface IWorkoutRepository
 {
     //private IDBContext db {get;}
+
+    public List<ITraining> GetTrainingByUserId(string userid);
 
     public void DeleteExercise(IExercise exercise);
     public void CreateExercise(IExercise exercise);

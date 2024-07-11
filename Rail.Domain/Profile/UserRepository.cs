@@ -60,7 +60,7 @@ public sealed class UserRepository : IUserRepository
     {
         return (db.GetUserByEmail(user.Email.ToString()) != null);
     }
-    public IUser GetUser(string name) 
+    public IUser GetUser() 
     {
         var u = db.GetAllUsers().FirstOrDefault();
         return MapEntityToUser(u);

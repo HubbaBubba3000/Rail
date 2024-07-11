@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 namespace Rail.Avalonia.View;
 
-public partial class AuthWindow : Window
+public partial class HomePage : UserControl
 {
-    public AuthWindow()
+    public HomePage() 
     {
         InitializeComponent();
     }

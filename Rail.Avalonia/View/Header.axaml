@@ -6,9 +6,9 @@
         Height="100"
         xmlns:v="clr-namespace:Rail.Avalonia.View">
     <Grid ColumnDefinitions="100,*" Background="#234344">
-        <Ellipse Fill="#aff" Grid.Column="0" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Ellipse Fill="#aff" Grid.Column="0" Width="60" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock Grid.Column="0" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                 Text="10" FontSize="48" />
+                 Text="{Binding Level}" FontSize="48" Margin="30,10,0,0" Foreground="Black" />
         
         <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10,20,0,0"
                  Text="{Binding UserName}" FontSize="24" />

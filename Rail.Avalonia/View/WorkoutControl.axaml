@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Rail.Avalonia.View.WorkoutControl"
+        xmlns:v="clr-namespace:Rail.Avalonia.View">
+    <Border Background="#567" CornerRadius="15" Width="350" Height="100">
+        <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Title}" Margin="15" FontSize="22" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Meta}" Margin="15" FontSize="22" />
+
+            <Button Grid.Row="1" Grid.Column="1" Content="Start"  />
+        </Grid>
+    </Border>
+</UserControl>

@@ -68,6 +68,10 @@ public sealed class DBContext : IDBContext
     {
         db.Connection.Query("UPDATE exercises SET Title=@Title, Description=@Description, Muscules=@Muscules, Stuff=@Stuff WHERE id = @id", exercise);
     }
+    public IEnumerable<Exercise> GetExercisesById(List<Guid> ids)
+    {
+        return db.Connection.Query<Exercise>("SELECT * FROM exercise WHERE id = @id", ids );
+    }
 
 #endregion
 
@@ -91,5 +95,11 @@ public sealed class DBContext : IDBContext
         db.Connection.Query("UPDATE trainings SET Title=@Title, Userid=@Userid, Exercise_ids=@Exercise_ids, WHERE id = @id", training);
 
     }
-#endregion
+
+
+    public IEnumerable<Training> GetTrainingByUserId(string userid)
+    {
+        return db.Connection.Query<Training>("SELECT * FROM exercise WHERE Userid = @Userid", new {Userid = userid});
+    }
+    #endregion
 }

@@ -18,6 +18,7 @@ namespace Rail.Domain.Workout
             Muscules = new();
             Muscules.Add(muscule);
         }
+        public Exercise()   {  }
         public override string ToString() 
         {
             return $"{Title} for {Muscules[0].Name}";

@@ -5,6 +5,7 @@ using Avalonia.Markup.Xaml;
 using DryIoc;
 using Rail.Avalonia.ViewModel;
 using Rail.Avalonia.View;
+using Rail.Avalonia.Model;
 
 using Rail.Domain.Abstractions;
 using Rail.Domain.Profile;
@@ -21,6 +22,8 @@ namespace Rail.Avalonia;
 public partial class App : Application
 {
     private IContainer container;
+
+    public IContainer GetContainer => container;
     public override void Initialize()
     {
         RegisterContainer();
@@ -35,18 +38,27 @@ public partial class App : Application
         container.Register<IUserRepository, UserRepository>();
         container.Register<IWorkoutRepository, WorkoutRepository>();
 
-        container.Register<MainVM>();
+        container.Register<UserContext>();
+
+        container.Register<MainWindowVM>();
         container.Register<NavBarVM>();
         container.Register<HeaderVM>();
+        container.Register<HomePageVM>();
+        container.Register<WeekStreakVM>();
+        container.Register<ProgressingVM>();
+
+        container.Register<HomePage>();
+        container.Register<TrainingPage>();
+        container.Register<MainWindow>();
+        container.Register<Progressing>();
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow() {
-                DataContext = container.Resolve<MainVM>()
-            };
+            desktop.MainWindow = container.Resolve<MainWindow>() ;
         }
 
         base.OnFrameworkInitializationCompleted();

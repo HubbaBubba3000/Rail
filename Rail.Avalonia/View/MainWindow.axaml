@@ -2,13 +2,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Width="400" Height="700"
+        Width="400" Height="600"
         x:Class="Rail.Avalonia.View.MainWindow"
         xmlns:v="clr-namespace:Rail.Avalonia.View"
-        Title="Rail">
-    <Grid> 
-        <v:Header VerticalAlignment="Top" DataContext="{Binding Header}"/>
-        
-        <v:NavBar VerticalAlignment="Bottom" DataContext="{Binding Navbar}" />
-    </Grid>
+        Title="Rail ">
+    <DockPanel > 
+        <v:Header DockPanel.Dock="Top" DataContext="{Binding Header}"/>
+        <SplitView IsPaneOpen="False" DisplayMode="CompactOverlay">
+            <SplitView.Pane>
+                <StackPanel Orientation="Vertical">
+                    <Button Content="Home" Command="{Binding MoveToHome}"/>
+                    <Button Content="Progressing" Command="{Binding MoveToProgressing}" />
+                    <Button Content="Settings" Command="{Binding MoveToSettings}" />
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Border Background="#f98">
+                <TransitioningContentControl Content="{Binding CurrentPage}"/>
+                </Border>
+            </SplitView.Content>
+        </SplitView>
+    </DockPanel>
 </Window>

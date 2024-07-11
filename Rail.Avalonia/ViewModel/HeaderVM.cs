@@ -1,22 +1,31 @@
-using Rail.Domain.Abstractions;
+using Rail.Avalonia.Model;
+
 using System;
 namespace Rail.Avalonia.ViewModel;
 
 public sealed class HeaderVM : BaseVM
 {
-    readonly IUserRepository User;
+    readonly UserContext Context;
 
-    public HeaderVM(IUserRepository userrep)
+    public HeaderVM(UserContext uc)
     {
-        User = userrep;
+        Context = uc;
     }
 
     public string UserName 
     {
         get {
-            var n = User.GetUser("bababoe@mail.cum");
-            Console.WriteLine(n);
-            return n.Name;
+            return Context.User.Name;
+        }
+        set 
+        {
+            OnPropertyChanged();
+        }
+    }
+    public int Level 
+    {
+        get {
+            return Context.User.Level;
         }
         set 
         {

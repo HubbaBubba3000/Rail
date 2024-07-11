@@ -9,5 +9,5 @@ public interface IUserRepository
     public void CreateUser(IUser user);
     public void DeleteUser(IUser user);
     public bool CheckUser(IUser user);
-    public IUser GetUser(string name);
+    public IUser GetUser();
 }
