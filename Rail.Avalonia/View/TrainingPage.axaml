@@ -4,15 +4,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="Rail.Avalonia.View.TrainingPage"
         xmlns:v="clr-namespace:Rail.Avalonia.View">
-    <UserControl.Resources>
-        
-    </UserControl.Resources>
     
     <ScrollViewer Background="#348573" Padding="5">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" FontSize="24" />
 
-            <ListBox ItemsSource="{Binding Exercises}"/>
+            <ListBox ItemsSource="{Binding Exercises}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#567" CornerRadius="15" Width="350" Height="100">
+                            <Grid>
+                                <TextBlock  Text="{Binding Title}" Margin="15" FontSize="22" />
+                                <TextBlock  Text="{Binding Description}" Margin="15" FontSize="22" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

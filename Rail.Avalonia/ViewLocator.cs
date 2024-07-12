@@ -5,7 +5,6 @@ using Rail.Avalonia.View;
 using DryIoc;
 using Avalonia;
 
-
 namespace Rail.Avalonia;
 public class ViewLocator : IDataTemplate
 {

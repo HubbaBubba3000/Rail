@@ -14,9 +14,24 @@
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" >
                 <TextBlock  Text="WorkoutList " />
-                <Button Content="+" HorizontalAlignment="Right" />
+                <Button Content="+" HorizontalAlignment="Right" Command="{Binding AddTraining}" />
             </StackPanel>
-            <ListBox ItemsSource="{Binding Trainings}"/>
+            <ListBox ItemsSource="{Binding Trainings}" >
+                <ListBox.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <Border Background="#567" CornerRadius="15" Width="350" Height="100">
+                            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Title}" Margin="15" FontSize="22" />
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Meta}" Margin="15" FontSize="22" />
+
+                                <Button Grid.Row="1" Grid.Column="1" Content="Start"  />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

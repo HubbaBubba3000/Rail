@@ -9,6 +9,9 @@ public sealed class UserContext
     private IWorkoutRepository workoutRepository;
 
     public IUser User {get;set;}
+
+    ///Training instance for Training pages
+    public ITraining CurrentTraining {get;set;}
     public UserContext(IUserRepository ur, IWorkoutRepository wr)
     {
         userRepository = ur;
@@ -16,4 +19,10 @@ public sealed class UserContext
         User = userRepository.GetUser();
     }
 
+    public void AddTraining(ITraining t)
+    {
+        t.UserID = User.id;
+        User.Trainings.Add(t);
+        workoutRepository.CreateTraining(t);
+    }
 }

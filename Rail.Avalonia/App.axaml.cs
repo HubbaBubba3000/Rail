@@ -39,6 +39,7 @@ public partial class App : Application
         container.Register<IWorkoutRepository, WorkoutRepository>();
 
         container.Register<UserContext>();
+        container.Register<Navigation>();
 
         container.Register<MainWindowVM>();
         container.Register<NavBarVM>();

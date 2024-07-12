@@ -6,8 +6,8 @@
         Height="50"
         xmlns:v="clr-namespace:Rail.Avalonia.View">
     <StackPanel Orientation="Horizontal">
-        <Button Content="Home" />
-        <Button Content="Progressing" />
-        <Button Content="Settings" />
+        <Button Content="Home" Command="{Binding MoveToHome}" />
+        <Button Content="Progressing" Command="{Binding MoveToProgressing}" />
+        <Button Content="Settings" Command="{Binding MoveToSettings}" />
     </StackPanel>
 </UserControl>

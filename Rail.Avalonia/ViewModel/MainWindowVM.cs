@@ -1,38 +1,24 @@
-using Avalonia;
+using Rail.Avalonia.Model;
 namespace Rail.Avalonia.ViewModel;
 
 public sealed class MainWindowVM : BaseVM 
 {
-    private BaseVM cur;
     public BaseVM CurrentPage {
-        get => cur;
+        get => navigation.CurrentPage;
         set {
-            cur = value;
-            OnPropertyChanged();
+            navigation.CurrentPage = value;
+            OnPropertyChanged("CurrentPage");
         }
     }
+    private Navigation navigation;
     private HeaderVM Header {get;set;}
     private NavBarVM Navbar {get;set;}
 
-    private BaseVM GetVM<T>( ) where T : BaseVM 
-    {
-        var vm = ((App)Application.Current).GetContainer.Resolve(typeof(T),DryIoc.IfUnresolved.Throw);
-        return (BaseVM)vm;
-    }
-
-    public MainWindowVM(HeaderVM head, NavBarVM nav )
+    public MainWindowVM(HeaderVM head, NavBarVM nav, Navigation n)
     {
         Header = head;
         Navbar = nav;
-        CurrentPage = GetVM<HomePageVM>();
+        navigation = n;
     }
     
-    public void MoveToHome()
-    {
-        CurrentPage = GetVM<HomePageVM>();
-    }
-    public void MoveToProgressing()
-    {
-        CurrentPage = GetVM<ProgressingVM>();
-    }
 }
