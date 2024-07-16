@@ -18,11 +18,11 @@ public class ViewLocator : IDataTemplate
         RegisterViewFactory<HomePageVM, HomePage>(c);
         RegisterViewFactory<TrainingPageVM, TrainingPage>(c);
         RegisterViewFactory<ProgressingVM, Progressing>(c);
+        RegisterViewFactory<NavigationVM, Navigation>(c);
     }
     public Control Build(object data)
     {
         var name = data.GetType().FullName.Replace("VM", "").Replace("ViewModel", "View");
-        Console.WriteLine(name);
         var type = Type.GetType(name);
 
         if (type != null)

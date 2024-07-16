@@ -26,6 +26,7 @@ public sealed class HomePageVM : BaseVM
             
         };
         context.AddTraining(t);
+        Trainings = new();
     }
     
 }

@@ -7,7 +7,7 @@ namespace Rail.Domain.Profile;
 public sealed class User : IUser
 {
     public User() { }
-    public string Name {get;set;}
+    public string Name {get;set;} = "username";
     public Guid id {get;set;} = Guid.NewGuid();
 
     public Email Email {get;set;}

@@ -22,7 +22,7 @@ public sealed class Sqlite : ISqlDb
     {
         Connection.Query("CREATE TABLE IF NOT EXISTS users (Name TEXT,id TEXT,Email TEXT, Password TEXT, Level INTEGER, Exp INTEGER )");
         Connection.Query("CREATE TABLE IF NOT EXISTS exercises (id TEXT, Title TEXT, Description TEXT, Muscules BLOB, Stuff TEXT)");
-        Connection.Query("CREATE TABLE IF NOT EXISTS training (id TEXT, Title TEXT, Userid TEXT, Exercises_ids BLOB)");
+        Connection.Query("CREATE TABLE IF NOT EXISTS trainings (id TEXT, Title TEXT, Userid TEXT, Exercises_ids BLOB)");
     }
     
 

@@ -10,7 +10,7 @@ namespace Rail.Domain.Profile;
 
 public sealed class UserRepository : IUserRepository 
 {
-    public List<IUser> Users {get;set;}
+    //public List<IUser> Users {get;set;}
 
     private readonly IDBContext db;
     public UserRepository(IDBContext _db) 

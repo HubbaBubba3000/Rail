@@ -1,5 +1,5 @@
 ﻿using Avalonia;
-using System;
+using Avalonia.Logging;
 
 namespace Rail.Avalonia;
 
@@ -17,5 +17,5 @@ class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
-            .LogToTrace();
+            .LogToTrace(LogEventLevel.Verbose);
 }

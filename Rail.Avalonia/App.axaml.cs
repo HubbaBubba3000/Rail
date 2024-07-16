@@ -39,8 +39,8 @@ public partial class App : Application
         container.Register<IWorkoutRepository, WorkoutRepository>();
 
         container.Register<UserContext>();
-        container.Register<Navigation>();
 
+        container.Register<NavigationVM>();
         container.Register<MainWindowVM>();
         container.Register<NavBarVM>();
         container.Register<HeaderVM>();
@@ -52,6 +52,7 @@ public partial class App : Application
         container.Register<TrainingPage>();
         container.Register<MainWindow>();
         container.Register<Progressing>();
+        container.Register<Navigation>();
     }
 
     public override void OnFrameworkInitializationCompleted()

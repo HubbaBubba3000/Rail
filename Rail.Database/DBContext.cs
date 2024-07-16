@@ -49,11 +49,11 @@ public sealed class DBContext : IDBContext
 #region exercise
     public IEnumerable<Exercise> GetExerciseByTitle(string title)
     {
-        return db.Connection.Query<Exercise>("SELECT * FROM exercise WHERE Title = @Title", new {Title = title} );
+        return db.Connection.Query<Exercise>("SELECT * FROM exercises WHERE Title = @Title", new {Title = title} );
     }
     public IEnumerable<Exercise> GetExerciseById(string Id)
     {
-        return db.Connection.Query<Exercise>("SELECT * FROM exercise WHERE id = @id", new {id = Id} );
+        return db.Connection.Query<Exercise>("SELECT * FROM exercises WHERE id = @id", new {id = Id} );
     }
 
     public void DeleteExercise(Exercise exercise)
@@ -70,7 +70,7 @@ public sealed class DBContext : IDBContext
     }
     public IEnumerable<Exercise> GetExercisesById(List<Guid> ids)
     {
-        return db.Connection.Query<Exercise>("SELECT * FROM exercise WHERE id = @id", ids );
+        return db.Connection.Query<Exercise>("SELECT * FROM exercises WHERE id = @id", ids );
     }
 
 #endregion
@@ -79,7 +79,7 @@ public sealed class DBContext : IDBContext
 
     public IEnumerable<Training> GetTrainingByTitle(string title)
     {
-        return db.Connection.Query<Training>("SELECT * FROM exercise WHERE Title = @Title", new {Title = title} );
+        return db.Connection.Query<Training>("SELECT * FROM trainings WHERE Title = @Title", new {Title = title} );
     }
 
     public void DeleteTraining(Training training)
@@ -88,18 +88,18 @@ public sealed class DBContext : IDBContext
     }
     public void CreateTraining(Training training)
     {
-        db.Connection.Query("INSERT INTO trainings (Title, id, Userid, Exercise_ids) VALUES (@Title, @id, @Userid, @Exercise_ids)", training);
+        db.Connection.Query("INSERT INTO trainings (Title, id, Userid, Exercises_ids) VALUES (@Title, @id, @Userid, @Exercise_ids)", training);
     }
     public void UpdateTraining(Training training)
     {
-        db.Connection.Query("UPDATE trainings SET Title=@Title, Userid=@Userid, Exercise_ids=@Exercise_ids, WHERE id = @id", training);
+        db.Connection.Query("UPDATE trainings SET Title=@Title, Userid=@Userid, Exercises_ids=@Exercise_ids, WHERE id = @id", training);
 
     }
 
 
     public IEnumerable<Training> GetTrainingByUserId(string userid)
     {
-        return db.Connection.Query<Training>("SELECT * FROM exercise WHERE Userid = @Userid", new {Userid = userid});
+        return db.Connection.Query<Training>("SELECT * FROM trainings WHERE Userid = @Userid", new {Userid = userid});
     }
     #endregion
 }

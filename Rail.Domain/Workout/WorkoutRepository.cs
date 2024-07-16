@@ -1,9 +1,6 @@
 using Rail.Domain.Abstractions;
 using Rail.Domain.Workout.ValueObjects;
 using Rail.Database.Abstractions;
-using Rail.Database;
-using Rail.Database.Entities;
-using System.Runtime.Serialization;
 namespace Rail.Domain.Workout;
 
 public sealed class WorkoutRepository : IWorkoutRepository
@@ -99,14 +96,14 @@ public sealed class WorkoutRepository : IWorkoutRepository
 
     public void DeleteTraining(ITraining training)
     {
-
+        db.DeleteTraining(MapTrainingToEntity(training));
     }
     public void CreateTraining(ITraining training)
     {
-
+        db.CreateTraining(MapTrainingToEntity(training));
     }
     public void UpdateTraining(ITraining training)
     {
-
+        db.UpdateTraining(MapTrainingToEntity(training));
     }
 }

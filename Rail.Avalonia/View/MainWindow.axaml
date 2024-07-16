@@ -9,12 +9,6 @@
     <DockPanel > 
         <v:Header DockPanel.Dock="Top" DataContext="{Binding Header}"/>
         <v:NavBar DockPanel.Dock="Bottom" DataContext="{Binding Navbar}" />
-        <SplitView IsPaneOpen="False" DisplayMode="CompactOverlay">
-            <SplitView.Content>
-                <Border Background="#f98">
-                <TransitioningContentControl Content="{Binding CurrentPage}"/>
-                </Border>
-            </SplitView.Content>
-        </SplitView>
+        <v:Navigation DataContext="{Binding navigation }"/>
     </DockPanel>
 </Window>

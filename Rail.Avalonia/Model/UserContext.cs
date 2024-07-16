@@ -17,6 +17,7 @@ public sealed class UserContext
         userRepository = ur;
         workoutRepository = wr;
         User = userRepository.GetUser();
+        User.Trainings = workoutRepository.GetTrainingByUserId(User.id.ToString());
     }
 
     public void AddTraining(ITraining t)

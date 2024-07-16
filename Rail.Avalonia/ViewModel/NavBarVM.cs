@@ -3,9 +3,9 @@ namespace Rail.Avalonia.ViewModel;
 
 public sealed class NavBarVM : BaseVM
 {
-    private Navigation navigation;
+    private NavigationVM navigation;
 
-    public NavBarVM(Navigation n) {
+    public NavBarVM(NavigationVM n) {
         navigation = n;
     }
     public void MoveToHome()
