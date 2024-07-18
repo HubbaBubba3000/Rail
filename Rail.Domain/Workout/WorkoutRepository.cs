@@ -1,6 +1,7 @@
 using Rail.Domain.Abstractions;
 using Rail.Domain.Workout.ValueObjects;
 using Rail.Database.Abstractions;
+using MessagePack.Formatters;
 namespace Rail.Domain.Workout;
 
 public sealed class WorkoutRepository : IWorkoutRepository
@@ -18,23 +19,33 @@ public sealed class WorkoutRepository : IWorkoutRepository
 
     private Database.Entities.Exercise MapExerciseToEntity(IExercise e)
     {
+        List<string> muscules = new();
+        foreach(var m in e.Muscules)
+            muscules.Add(m.Name);
         return new Rail.Database.Entities.Exercise() 
         {
             id = e.id.ToString(),
             Title = e.Title,
             Description = e.Description,
-            Muscules = serializer.Serialize<List<Muscule>>(e.Muscules),
+            Muscules = (e.Muscules.Count != 0) ? serializer.Serialize<List<string>>(muscules) : null,
             Stuff = e.Stuff.ToString()
         };
     }
     private Exercise MapEntityToExercise(Database.Entities.Exercise e)
     {
+        List<Muscule> muscules = new();
+        List<string> emuscules = serializer.Deserialize<List<string>>(e.Muscules);
+        foreach (var m in emuscules)
+        {
+            muscules.Add(new Muscule(m));
+        }
+
         return new Exercise() 
         {
             id = new Guid(e.id),
             Title = e.Title,
             Description = e.Description,
-            Muscules = serializer.Deserialize<List<Muscule>>(e.Muscules),
+            Muscules = muscules,
             Stuff = new Stuff(e.Stuff)
         };
     }
@@ -56,9 +67,19 @@ public sealed class WorkoutRepository : IWorkoutRepository
     private Training MapEntityToTraining(Database.Entities.Training t)
     {
         List<IExercise> exercises = new();
-        foreach (var e in db.GetExercisesById(serializer.Deserialize<List<Guid>>(t.Exercise_ids)))
+        List<Guid> ids;
+        try {
+            ids = serializer.Deserialize<List<Guid>>(t.Exercise_ids);
+        }
+        catch {
+            ids = new();
+        }
+        if (ids.Count != 0)
         {
-            exercises.Add(MapEntityToExercise(e));
+            foreach (var e in db.GetExercisesById(ids))
+            {
+                exercises.Add(MapEntityToExercise(e));
+            }
         }
         return new Training() 
         {
@@ -74,12 +95,28 @@ public sealed class WorkoutRepository : IWorkoutRepository
     public List<ITraining> GetTrainingByUserId(string userid) 
     {
         var list = new List<ITraining>();
-        foreach (var t in db.GetTrainingByUserId(userid))
+        var trainings = db.GetTrainingByUserId(userid);
+        foreach (var t in trainings)
         {
             list.Add(MapEntityToTraining(t));
         }
         return list;
     }
+    public IExercise GetExerciseById(string id)
+    {
+        var exercise = db.GetExercisesById(new Guid(id)).FirstOrDefault();
+        return MapEntityToExercise(exercise) ;
+    }
+    public List<IExercise> GetAllExercises()
+    {
+        var list = new List<IExercise>();
+        var exercises = db.GetAllExercises();
+        foreach (var e in exercises)
+            list.Add(MapEntityToExercise(e));
+        return list;
+
+    }
+    
     public void DeleteExercise(IExercise exercise)
     {
 

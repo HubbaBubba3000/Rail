@@ -70,8 +70,20 @@ public sealed class DBContext : IDBContext
     }
     public IEnumerable<Exercise> GetExercisesById(List<Guid> ids)
     {
-        return db.Connection.Query<Exercise>("SELECT * FROM exercises WHERE id = @id", ids );
+        var exs = db.Connection.Query<Exercise>("SELECT * FROM exercises WHERE id = @id", ids );
+        return exs;
     }
+    public IEnumerable<Exercise> GetExercisesById(Guid ids)
+    {
+        var exs = db.Connection.Query<Exercise>("SELECT * FROM exercises WHERE id = @id", ids.ToString() );
+        return exs;
+    }
+    public IEnumerable<Exercise> GetAllExercises()
+    {
+        var exs = db.Connection.Query<Exercise>("SELECT * FROM exercises");
+        return exs;
+    }
+
 
 #endregion
 
@@ -92,14 +104,15 @@ public sealed class DBContext : IDBContext
     }
     public void UpdateTraining(Training training)
     {
-        db.Connection.Query("UPDATE trainings SET Title=@Title, Userid=@Userid, Exercises_ids=@Exercise_ids, WHERE id = @id", training);
+        db.Connection.Query("UPDATE trainings SET Title=@Title, Exercises_ids=@Exercise_ids WHERE id = @id", training);
 
     }
 
 
     public IEnumerable<Training> GetTrainingByUserId(string userid)
     {
-        return db.Connection.Query<Training>("SELECT * FROM trainings WHERE Userid = @Userid", new {Userid = userid});
+        var ts = db.Connection.Query<Training>("SELECT * FROM trainings WHERE Userid = @Userid", new {Userid = userid});
+        return ts;
     }
     #endregion
 }

@@ -11,6 +11,8 @@ public class MessagePackBinarySerializer : IBinarySerializer
     }
     public T Deserialize<T>(byte[] data)
     {
+        if (data == null)
+            throw new NullReferenceException();
         return MessagePackSerializer.Deserialize<T>(data);
     }
 

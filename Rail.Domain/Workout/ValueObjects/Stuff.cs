@@ -1,6 +1,4 @@
 
-using System.Security.Cryptography.X509Certificates;
-
 namespace Rail.Domain.Workout.ValueObjects;
 
 public sealed class Stuff 
@@ -9,6 +7,10 @@ public sealed class Stuff
 
     public Stuff(string name) 
     {
-        Name = Name;
+        Name = name;
+    }
+    public override string ToString()
+    {
+        return Name;
     }
 }

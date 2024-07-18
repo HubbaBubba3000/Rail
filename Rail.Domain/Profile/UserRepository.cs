@@ -36,7 +36,7 @@ public sealed class UserRepository : IUserRepository
         return new User() 
         {
             Name = u.Name,
-            id = Guid.NewGuid(),
+            id = new Guid(u.id),
             Email = new Email(u.Email),
             Password = Password.GetFromDB(u.Password),
             Level = u.Level,

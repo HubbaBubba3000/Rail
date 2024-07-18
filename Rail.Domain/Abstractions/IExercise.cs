@@ -8,4 +8,6 @@ public interface IExercise
     public string Description {get;set;}
     public List<Muscule> Muscules {get; set;}
     public Stuff Stuff {get;set;}
+
+    public string MusculesListToString();
 }

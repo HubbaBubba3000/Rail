@@ -15,6 +15,8 @@ public interface IDBContext
     public void UpdateUser(User user);
 
     public IEnumerable<Exercise> GetExercisesById(List<Guid> ids);
+    public IEnumerable<Exercise> GetExercisesById(Guid ids);
+    public IEnumerable<Exercise> GetAllExercises();
 
     public void DeleteExercise(Exercise exercise);
     public void CreateExercise(Exercise exercise);
