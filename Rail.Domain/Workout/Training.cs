@@ -5,7 +5,7 @@ namespace Rail.Domain.Workout;
 //agregate set of exercises
 public sealed class Training : ITraining
 {
-    public string Title {get;set;}
+    public string Title {get;set;} ="title";
 
     public Guid id {get;set;} = Guid.NewGuid();
 

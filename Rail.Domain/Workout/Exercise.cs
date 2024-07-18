@@ -5,16 +5,15 @@ using System.Text;
 namespace Rail.Domain.Workout;
 public sealed class Exercise : IExercise
 {
-    public Guid id {get;set;}
-    public string Title {get; set;}
-    public string Description {get;set;}
+    public Guid id {get;set;} = Guid.NewGuid();
+    public string Title {get; set;} = "title";
+    public string Description {get;set;} = "";
     public List<Muscule> Muscules {get; set;} = new();
-    public Stuff Stuff {get;set;}
+    public Stuff Stuff {get;set;} = new("none");
 
     public Exercise(string title, Muscule muscule, string stuff = "none") 
     {
         Title = title;
-        id = Guid.NewGuid();
         Muscules.Add(muscule);
         Stuff = new(stuff);
     }
