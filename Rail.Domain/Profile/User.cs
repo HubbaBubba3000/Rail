@@ -16,5 +16,5 @@ public sealed class User : IUser
     public List<ITraining> Trainings {get;set;} = new();
 
     public int Level {get;set;} = 1;
-    public int Exp {get;set;}
+    public int Exp {get;set;} = 0;
 }
