@@ -26,17 +26,54 @@ public sealed class App {
 
             { "newtrain", NewTraining },
             { "gettrain", GetTraining },
-            // { "edittrain", GetTraining },
+            { "edittrain", EditTraining },
             {"deltrain", DeleteTraining },
             { "getexers", GetExerciseList },
              { "deleteexer", DeleteExercise },
-            // { "editexer", EditExercise },
+            { "editexer", EditExercise },
             // {"starttrain", StartTraining},
             { "newexer", NewExercise }
         };
 
     }
-
+    public void EditExercise(string[] args)
+    {
+        var e = workoutrep.GetExerciseById(args[0]);
+        for (int i=1;i<args.Length;i+=2)
+        {
+            switch (args[i]) {
+                case "-t" :
+                    e.Title = args[i+1];
+                    break;
+                case "-d" :
+                    e.Description = args[i+1];
+                    break;
+                case "-s" :
+                    e.Stuff = new Stuff(args[i+1]);
+                    break;
+                case "-m" :
+                    e.Muscules.Add(new(args[i+1]));
+                    break;
+            }
+        }
+        workoutrep.UpdateExercise(e);
+        System.Console.WriteLine($"new Exercise {e.Title} (id : {e.id} ) was updated");
+    }
+    
+    public void EditTraining(string[] args)
+    {
+        var t = workoutrep.GetTrainingByUserId(user.id.ToString()).FirstOrDefault();
+        for (int i=0;i<args.Length;i+=2)
+        {
+            switch (args[i]) {
+                case "-t" :
+                    t.Title = args[i+1];
+                    break;
+            }
+        }
+        workoutrep.UpdateTraining( t );
+        System.Console.WriteLine($"Training {t.Title} (id: {t.id}) was updated");
+    }
     public void DeleteExercise(string[] args)
     {
         string id = "";
